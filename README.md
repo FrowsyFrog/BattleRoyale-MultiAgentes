@@ -29,6 +29,7 @@ Con el objetivo de desarrollar el sistema multiagente propuesto, hemos considera
 
 ## Implementación
 Hasta la fecha de realización del informe, hemos desarrollado una implementación parcial de las funcionalidades previstas.
+
 *Figura 1. Función CollectObservations. Elaboración propia, 2023.*
 ![image](https://github.com/FrowsyFrog/Topicos-Agentes/assets/91223158/e7869d39-16b7-4e4f-9f29-f2f88cdfb701)
 Como se observa en la Figura 1, hemos creado una función que permite al agente recibir las observaciones de cuatro variables:
@@ -43,9 +44,14 @@ Como se observa en la Figura 2, hemos diseñado una función que permite a los a
 - Posición de próximo movimiento: Representado por dos enteros.
 - Movimiento: Utilizando los valores de las variables, el deltaTime y la velocidad de un agente.
 
-*Video 1. Representación del aprendizaje de un agente. Elaboración propia, 2023.
-
+*Video 1. Representación del aprendizaje de un agente. Elaboración propia, 2023.*
+<video src="https://github.com/FrowsyFrog/Topicos-Agentes/assets/91223158/f9505d31-3f9f-426d-ba3f-f281d2707de7"></video>
 
 ### Bibliografía
 Dorri, A., Kanhere, S. S., & Jurdak, R. (2018). Multi-agent systems: A survey. *Ieee Access*, 6, 28573-28593. https://doi.org/10.1109/ACCESS.2018.2831228
+
 Singh, M. P. (1994). Multiagent systems. In J. G. Carbonell & J. Siekmann (Ed.)., *Multiagent systems* (pp. 1-2). https://doi.org/10.1007/BFb0030532
+
+
+
+
