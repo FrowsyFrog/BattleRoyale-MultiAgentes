@@ -43,7 +43,7 @@ Como se observa en la Figura 1, hemos creado una función que permite al agente 
 ![image](https://github.com/FrowsyFrog/Topicos-Agentes/assets/91223158/4cf5ba02-de32-422b-9191-d018ca6da8e5)
 
 Como se observa en la Figura 2, hemos diseñado una función que permite a los agentes esquivar las bombas utilizando dos variables y un método:
-- Posición de próximo movimiento: Representado por dos enteros.
+- Dirección de próximo movimiento: Representado por dos flotantes en el rango [-1;1].
 - Movimiento: Utilizando los valores de las variables, el deltaTime y la velocidad de un agente.
 
 *Video 1. Representación del aprendizaje de un agente. Elaboración propia, 2023.*
