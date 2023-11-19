@@ -32,6 +32,7 @@ Hasta la fecha de realización del informe, hemos desarrollado una implementaci�
 
 *Figura 1. Función CollectObservations. Elaboración propia, 2023.*
 ![image](https://github.com/FrowsyFrog/Topicos-Agentes/assets/91223158/e7869d39-16b7-4e4f-9f29-f2f88cdfb701)
+
 Como se observa en la Figura 1, hemos creado una función que permite al agente recibir las observaciones de cuatro variables:
 - Posición: Representado por un vector de tres dimensiones por cada agente.
 - Posición de las bombas: Representado por un vector de tres dimensiones por cada bomba.
@@ -40,6 +41,7 @@ Como se observa en la Figura 1, hemos creado una función que permite al agente 
 
 *Figura 2. Función OnActionReceived. Elaboración propia, 2023.*
 ![image](https://github.com/FrowsyFrog/Topicos-Agentes/assets/91223158/4cf5ba02-de32-422b-9191-d018ca6da8e5)
+
 Como se observa en la Figura 2, hemos diseñado una función que permite a los agentes esquivar las bombas utilizando dos variables y un método:
 - Posición de próximo movimiento: Representado por dos enteros.
 - Movimiento: Utilizando los valores de las variables, el deltaTime y la velocidad de un agente.
