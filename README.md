@@ -1,7 +1,7 @@
 # Trabajo Final - Tópicos en Ciencias de la Computación - The Great Agents
 ### Integrantes:
 - Flores Tenorio, Juan Diego Enrique - u202014558
-- Galindo Alvarez, Franco - u
+- Galindo Alvarez, Franco - u202010807
 - Goyas Ayllón, Leonardo Andre - u202010206
 ### Profesor:
 - Canaval Sanchez, Luis Martin
