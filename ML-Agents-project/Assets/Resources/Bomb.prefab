@@ -97,9 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85bd903f617bc74a9c723709b850f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxExplodeTime: 1.19
-  _explodingTime: 1
-  _timeDisabled: 2
+  _manager: {fileID: 0}
+  _explodingTime: 1.19
   _explosion: {fileID: 6418561260508247691}
 --- !u!1 &6418561260508247691
 GameObject:
