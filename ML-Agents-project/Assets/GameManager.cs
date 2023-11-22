@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-public class BombManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] bool _restartWhenEnds = true;
     [SerializeField] float _minDistanceToBomb = 3.71f;
-    [SerializeField] float _maxDistanceToBomb = 10.71f;
+    [SerializeField] float _minInsideBomb = 3.71f;
 
     [Header("UI")]
     [SerializeField] TMPro.TextMeshProUGUI _gameTimeTxt;
@@ -33,21 +34,45 @@ public class BombManager : MonoBehaviour
     int _maxAmmosSaved;
     bool _gameEnded = false;
     List<BattleAgent> _agentsAlive = new List<BattleAgent>();
-    public float MinDistanceToBomb { get => _minDistanceToBomb; }
-    public float MaxDistanceToBomb { get => _maxDistanceToBomb; }
     public List<BattleAgent> Agents { get => _agents; }
-    public List<Bomb> Bombs { get=> _bombs; }
-    public List<Transform> Ammos { get=> _ammos; }
-    public float TimeLeft { get => _curTimeGame; }
 
+    // REWARDS
+    public float KillReward { get => 5.5f; }
+    public float LosePenalty { get => -6f; }
+    public float GrabAmmoReward { get => 1f; }
+    public float InsideFutureExplosionPenalty { get => -0.03f; }
+    public float OutFutureExplosionReward { get => +1f; }
+    public float OnWallPenalty { get => -0.1f; }
+    public float PutBombReward(float minDistanceToAgent) 
+    {
+        return minDistanceToAgent <= _minDistanceToBomb ? 5f : -2.69f;
+    }
+    public bool InsideFutureExplosion(Vector3 agentPos, bool wasIn)
+    {
+        float minDistance = float.MaxValue;
+        foreach (Bomb bomb in _bombs)
+        {
+            if (bomb.IsDisabled) continue;
+            float distance = Vector3.Distance(bomb.transform.position, agentPos);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+            }
+        }
+        // wasIn = distancia para salir
+        // ! distancia para considerarse dentro
+        return minDistance < (wasIn ? _minInsideBomb : _minDistanceToBomb);
+    }
     private void Awake()
     {
         _curTimeGame = _maxTimeGame;
         _maxAmmosSaved = _maxAmmosInGame;
 
-        foreach(var agent in _agents)
+        foreach(Transform child in transform)
         {
-            _agentsAlive.Add(agent);
+            BattleAgent NewAgent = child.GetComponent<BattleAgent>();
+            _agents.Add(NewAgent);
+            _agentsAlive.Add(NewAgent);
         }
 
         _gameTimeTxt.text = $"Tiempo restante: {(int)_curTimeGame}";
@@ -56,7 +81,6 @@ public class BombManager : MonoBehaviour
 
     void RestartGame()
     {
-        Debug.Log("RESTART GAME");
         _gameEnded = false;
         _maxAmmosInGame = _maxAmmosSaved;
         _curTimeGame = _maxTimeGame;
@@ -91,10 +115,10 @@ public class BombManager : MonoBehaviour
         _curTimeGame -= Time.deltaTime;
         if (_curTimeGame <= 0)
         {
-            foreach (BattleAgent agent in _agents)
-            {
-                agent.LoseGame();
-            }
+            //foreach (BattleAgent agent in _agents)
+            //{
+            //    agent.LoseGame();
+            //}
             _curTimeGame = 0;
 
             _gameEnded = true;
@@ -141,7 +165,7 @@ public class BombManager : MonoBehaviour
     {
         foreach(Bomb bomb in _bombs)
         {
-            if(bomb.State == 0) // PUT A DISABLED BOMB
+            if(bomb.IsDisabled) // PUT A DISABLED BOMB
             {
                 bomb.PlaceBomb(owner, _maxBombExplodeTime);
                 break;
@@ -157,34 +181,35 @@ public class BombManager : MonoBehaviour
     public void PlayerDead(BattleAgent deadPlayer)
     {
         _maxAmmosInGame += deadPlayer.AvailableBombs;
-        _agentsAlive.Remove(deadPlayer);
-        _playersLeftTxt.text = $"Agentes vivos: {_agentsAlive.Count}";
+        //_agentsAlive.Remove(deadPlayer);
+        //_playersLeftTxt.text = $"Agentes vivos: {_agentsAlive.Count}";
 
-        if (_agentsAlive.Count > 1) return;
+        //if (_agentsAlive.Count > 1) return;
 
-        BattleAgent AliveAgent = null;
-        if(_agentsAlive.Count == 1)
-        {
-            AliveAgent = _agentsAlive[0];
-            AliveAgent.WinGame();
-            Debug.Log("winner!!!");
-        }
-
-        foreach (BattleAgent agent in _agents)
-        {
-            if (agent == AliveAgent) continue;
-            agent.LoseGame();
-        }
-        _gameEnded = true;
-        if (_restartWhenEnds) RestartGame();
-        else {
-            enabled = false;
-        }
+        //BattleAgent AliveAgent = null;
+        //if(_agentsAlive.Count == 1)
+        //{
+        //    AliveAgent = _agentsAlive[0];
+        //    AliveAgent.WinGame();
+        //    Debug.Log("winner!!!");
+        //}
+        //
+        //foreach (BattleAgent agent in _agents)
+        //{
+        //    if (agent == AliveAgent) continue;
+        //    agent.LoseGame();
+        //}
+        //_gameEnded = true;
+        //if (_restartWhenEnds) RestartGame();
+        //else {
+        //    enabled = false;
+        //}
     }
 
     public void GrabAmmo(Transform ammo)
     {
         ammo.gameObject.SetActive(false);
+        _maxAmmosInGame++; //
     }
 
     public Vector3 GetRandomSpawnPos()
