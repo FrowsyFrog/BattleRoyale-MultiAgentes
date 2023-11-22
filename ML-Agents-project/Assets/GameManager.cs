@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public List<BattleAgent> Agents { get => _agents; }
 
     // REWARDS
+    public float WinReward { get => 5f; }
     public float KillReward { get => 5.5f; }
     public float LosePenalty { get => -6f; }
     public float GrabAmmoReward { get => 1f; }
@@ -85,8 +86,10 @@ public class GameManager : MonoBehaviour
         _maxAmmosInGame = _maxAmmosSaved;
         _curTimeGame = _maxTimeGame;
         _agentsAlive.Clear();
+
         foreach (var agent in _agents)
         {
+            agent.RestartGame();
             _agentsAlive.Add(agent);
         }
 
@@ -99,6 +102,9 @@ public class GameManager : MonoBehaviour
         {
             ammo.gameObject.SetActive(false);
         }
+
+        _gameTimeTxt.text = $"Tiempo restante: {(int)_curTimeGame}";
+        _playersLeftTxt.text = $"Agentes vivos: {_agentsAlive.Count}";
     }
 
     private void Update()
@@ -115,10 +121,10 @@ public class GameManager : MonoBehaviour
         _curTimeGame -= Time.deltaTime;
         if (_curTimeGame <= 0)
         {
-            //foreach (BattleAgent agent in _agents)
-            //{
-            //    agent.LoseGame();
-            //}
+            foreach (BattleAgent agent in _agents)
+            {
+                agent.LoseGame();
+            }
             _curTimeGame = 0;
 
             _gameEnded = true;
@@ -181,29 +187,30 @@ public class GameManager : MonoBehaviour
     public void PlayerDead(BattleAgent deadPlayer)
     {
         _maxAmmosInGame += deadPlayer.AvailableBombs;
-        //_agentsAlive.Remove(deadPlayer);
-        //_playersLeftTxt.text = $"Agentes vivos: {_agentsAlive.Count}";
+        _agentsAlive.Remove(deadPlayer);
+        _playersLeftTxt.text = $"Agentes vivos: {_agentsAlive.Count}";
 
-        //if (_agentsAlive.Count > 1) return;
+        if (_agentsAlive.Count > 1) return;
 
-        //BattleAgent AliveAgent = null;
-        //if(_agentsAlive.Count == 1)
-        //{
-        //    AliveAgent = _agentsAlive[0];
-        //    AliveAgent.WinGame();
-        //    Debug.Log("winner!!!");
-        //}
-        //
-        //foreach (BattleAgent agent in _agents)
-        //{
-        //    if (agent == AliveAgent) continue;
-        //    agent.LoseGame();
-        //}
-        //_gameEnded = true;
-        //if (_restartWhenEnds) RestartGame();
-        //else {
-        //    enabled = false;
-        //}
+        BattleAgent AliveAgent = null;
+        if(_agentsAlive.Count == 1)
+        {
+            AliveAgent = _agentsAlive[0];
+            AliveAgent.WinGame();
+            Debug.Log("winner!!!");
+        }
+        
+        foreach (BattleAgent agent in _agents)
+        {
+            if (agent == AliveAgent) continue;
+            agent.LoseGame();
+        }
+
+        _gameEnded = true;
+        if (_restartWhenEnds) RestartGame();
+        else {
+            enabled = false;
+        }
     }
 
     public void GrabAmmo(Transform ammo)

@@ -1333,6 +1333,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -1401,6 +1405,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -1473,6 +1481,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -1541,6 +1553,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -1613,6 +1629,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -1681,6 +1701,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -1885,6 +1909,10 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.857872
@@ -1966,6 +1994,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -2034,6 +2066,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -2172,6 +2208,10 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.857872
@@ -2251,6 +2291,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -2389,6 +2433,10 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.857872
@@ -2470,6 +2518,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -2538,6 +2590,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: _manager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
@@ -2621,6 +2677,10 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.857872
@@ -2700,6 +2760,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: _manager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
@@ -2783,6 +2847,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -2851,6 +2919,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: _manager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
@@ -2932,6 +3004,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -3136,6 +3212,10 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.857872
@@ -3217,6 +3297,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -3285,6 +3369,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -3423,6 +3511,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -3557,6 +3649,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -3695,6 +3791,10 @@ PrefabInstance:
       propertyPath: _manager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.857872
@@ -3776,6 +3876,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -3844,6 +3948,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
@@ -3916,6 +4024,10 @@ PrefabInstance:
       propertyPath: _bombManager
       value: 
       objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.822128
@@ -3984,6 +4096,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
       propertyPath: _manager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 4339698672002180339, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 4552329515417852224, guid: 21f0cc4fe6f61f449987ba02975ccf34, type: 3}
@@ -4131,6 +4247,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
       propertyPath: _bombManager
+      value: 
+      objectReference: {fileID: 5620621774862282156}
+    - target: {fileID: 8189648637465471824, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}
+      propertyPath: _gameManager
       value: 
       objectReference: {fileID: 5620621774862282156}
     - target: {fileID: 8755594411346486015, guid: 020b9e3d322c6774d851a1a4f323c602, type: 3}

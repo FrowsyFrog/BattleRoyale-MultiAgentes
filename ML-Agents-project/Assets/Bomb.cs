@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] GameManager _manager;
+    [SerializeField] GameManager _gameManager;
     [SerializeField] private float _explodingTime;
     [SerializeField] GameObject _explosion;
     BattleAgent _bombOwner;
@@ -37,7 +37,7 @@ public class Bomb : MonoBehaviour
 
         DisableBomb();
 
-        _manager.BombExploded();
+        _gameManager.BombExploded();
     }
 
     public void DisableBomb()

@@ -14,7 +14,7 @@ public class BattleAgent : Agent
     [SerializeField] bool _checkDebug = false;
     [SerializeField] int _availableBombs = 0;
     [SerializeField] float _moveSpeed = 1;
-    [SerializeField] GameManager _bombManager;
+    [SerializeField] GameManager _gameManager;
     [SerializeField] GameObject _agentModel;
     Rigidbody _rb;
     bool _isDead = false;
@@ -31,7 +31,9 @@ public class BattleAgent : Agent
     public override void OnEpisodeBegin()
     {
         _agentModel.SetActive(true);
-        transform.position = _bombManager.GetRandomSpawnPos();
+        GetComponent<BoxCollider>().enabled = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+        transform.position = _gameManager.GetRandomSpawnPos();
         _availableBombs = 0;
         _nearToBomb = false;
         _isDead = false;
@@ -79,26 +81,26 @@ public class BattleAgent : Agent
         if (actions.DiscreteActions[2] == 1 && _availableBombs >= 1)
         {
             _availableBombs--;
-            _bombManager.PutBomb(this);
+            _gameManager.PutBomb(this);
             // More reward if place bomb near to other agent
-            float bombPlacementReward = _bombManager.PutBombReward(DistanceToNearestAgent());
+            float bombPlacementReward = _gameManager.PutBombReward(DistanceToNearestAgent());
             AddReward(bombPlacementReward);
         }
 
         if (!_nearToBomb)
         {
-            if (_bombManager.InsideFutureExplosion(transform.position, false))
+            if (_gameManager.InsideFutureExplosion(transform.position, false))
             {
                 _nearToBomb = true;
             }
         }
         else
         {
-            AddReward(_bombManager.InsideFutureExplosionPenalty);
-            if (!_bombManager.InsideFutureExplosion(transform.position, true))
+            AddReward(_gameManager.InsideFutureExplosionPenalty);
+            if (!_gameManager.InsideFutureExplosion(transform.position, true))
             {
                 _nearToBomb = false;
-                AddReward(_bombManager.OutFutureExplosionReward);
+                AddReward(_gameManager.OutFutureExplosionReward);
             }
         }
     }
@@ -106,7 +108,7 @@ public class BattleAgent : Agent
     float DistanceToNearestAgent()
     {
         float minDistance = float.MaxValue;
-        foreach (BattleAgent agent in _bombManager.Agents)
+        foreach (BattleAgent agent in _gameManager.Agents)
         {
             if (!agent.IsDead && agent != this)
             {
@@ -142,25 +144,24 @@ public class BattleAgent : Agent
         DiscreteActions[2] = Input.GetKey(KeyCode.E) ? 1: 0;
     }
 
+    public void RestartGame()
+    {
+        EndEpisode();
+    }
+
     public void WinGame()
     {
-        AddReward(2.5f);
-        EndEpisode();
+        AddReward(_gameManager.WinReward);
     }
 
     public void LoseGame()
     {
-        if (!_isDead) {
-            AddReward(_bombManager.LosePenalty);
-            _isDead = true;
-        }
-        EndEpisode();
+        if (!_isDead) PlayerDies();
     }
 
     public void KillPlayer()
     {
-        AddReward(_bombManager.KillReward);
-        EndEpisode(); // QUITAR EN JUEGO
+        AddReward(_gameManager.KillReward);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -171,14 +172,14 @@ public class BattleAgent : Agent
         if (other.CompareTag("Explosion"))
         {
             BattleAgent bombOwner = other.GetComponentInParent<Bomb>().BombOwner;
-            if(bombOwner != this) bombOwner.KillPlayer(); // GIVE REWARD TO AGENT THAT KILLS YOU
+            if(bombOwner != this) bombOwner.KillPlayer(); // GIVE REWARD TO AGENT THAT KILLS YOU // ONLY IF YOU DON'T KILL YOURSELF
             PlayerDies();
         }
         else if (other.CompareTag("Ammo"))
         {
-            AddReward(_bombManager.GrabAmmoReward); // REWARD GRAB BULLET
+            AddReward(_gameManager.GrabAmmoReward); // REWARD GRAB BULLET
             _availableBombs++;
-            _bombManager.GrabAmmo(other.transform);
+            _gameManager.GrabAmmo(other.transform);
         }
     }
 
@@ -188,16 +189,18 @@ public class BattleAgent : Agent
 
         if (other.collider.CompareTag("Walls"))
         {
-            AddReward(_bombManager.OnWallPenalty);
+            AddReward(_gameManager.OnWallPenalty);
         }
     }
 
     void PlayerDies()
     {
+        AddReward(_gameManager.LosePenalty);
+
         _isDead = true;
-        AddReward(_bombManager.LosePenalty);
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<BoxCollider>().enabled = false;
         _agentModel.SetActive(false);
-        _bombManager.PlayerDead(this);
-        EndEpisode(); // QUITAR LUEGOOO...
+        _gameManager.PlayerDead(this);
     }
 }
