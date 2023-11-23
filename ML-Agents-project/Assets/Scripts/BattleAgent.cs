@@ -15,8 +15,9 @@ public class BattleAgent : Agent
     [SerializeField] int _availableBombs = 0;
     [SerializeField] float _moveSpeed = 1;
     [SerializeField] GameManager _gameManager;
-    [SerializeField] GameObject _agentModel;
     [SerializeField] private List<GameObject> _models;
+    GameObject _agentModel;
+
     Rigidbody _rb;
     bool _isDead = false;
     bool _nearToBomb = false;
@@ -26,18 +27,27 @@ public class BattleAgent : Agent
 
     public override void Initialize()
     {
-        _agentModel = _models[Random.Range(0, _models.Count)];
-        _agentModel.SetActive(true);
         _rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (!_checkDebug) return;
+
+        if (Input.GetKeyDown(KeyCode.E) && _availableBombs > 0) PutBomb();
     }
 
     public override void OnEpisodeBegin()
     {
+        if(_agentModel) _agentModel.SetActive(false);
+        _agentModel = _models[Random.Range(0, _models.Count)];
         _agentModel.SetActive(true);
+
         GetComponent<BoxCollider>().enabled = true;
         GetComponent<Rigidbody>().isKinematic = false;
         transform.position = _gameManager.GetRandomSpawnPos();
         _availableBombs = 0;
+        if (_checkDebug) _gameManager.SetAmmoText(_availableBombs);
         _nearToBomb = false;
         _isDead = false;
     }
@@ -81,14 +91,7 @@ public class BattleAgent : Agent
             _agentModel.transform.rotation = Quaternion.RotateTowards(_agentModel.transform.rotation, toRotation, Time.deltaTime * _rotationSpeed);
         }
 
-        if (actions.DiscreteActions[2] == 1 && _availableBombs >= 1)
-        {
-            _availableBombs--;
-            _gameManager.PutBomb(this);
-            // More reward if place bomb near to other agent
-            float bombPlacementReward = _gameManager.PutBombReward(DistanceToNearestAgent());
-            AddReward(bombPlacementReward);
-        }
+        if (actions.DiscreteActions[2] == 1 && _availableBombs >= 1) PutBomb();
 
         if (!_nearToBomb)
         {
@@ -106,6 +109,17 @@ public class BattleAgent : Agent
                 AddReward(_gameManager.OutFutureExplosionReward);
             }
         }
+    }
+
+    void PutBomb()
+    {
+        _availableBombs--;
+        if (_checkDebug) _gameManager.SetAmmoText(_availableBombs);
+
+        _gameManager.PutBomb(this);
+        // More reward if place bomb near to other agent
+        float bombPlacementReward = _gameManager.PutBombReward(DistanceToNearestAgent());
+        AddReward(bombPlacementReward);
     }
 
     float DistanceToNearestAgent()
@@ -144,7 +158,7 @@ public class BattleAgent : Agent
             case 1: DiscreteActions[1] = 2; break;
         }
 
-        DiscreteActions[2] = Input.GetKey(KeyCode.E) ? 1: 0;
+        //DiscreteActions[2] = Input.GetKey(KeyCode.E) ? 1: 0;
     }
 
     public void RestartGame()
@@ -152,9 +166,10 @@ public class BattleAgent : Agent
         EndEpisode();
     }
 
-    public void WinGame()
+    public bool WinGame()
     {
         AddReward(_gameManager.WinReward);
+        return _checkDebug;
     }
 
     public void LoseGame()
@@ -182,6 +197,8 @@ public class BattleAgent : Agent
         {
             AddReward(_gameManager.GrabAmmoReward); // REWARD GRAB BULLET
             _availableBombs++;
+            if (_checkDebug) _gameManager.SetAmmoText(_availableBombs);
+
             _gameManager.GrabAmmo(other.transform);
         }
     }
@@ -199,6 +216,7 @@ public class BattleAgent : Agent
     void PlayerDies()
     {
         AddReward(_gameManager.LosePenalty);
+        if (_checkDebug) _gameManager.SetAmmoText(-1);
 
         _isDead = true;
         GetComponent<Rigidbody>().isKinematic = true;

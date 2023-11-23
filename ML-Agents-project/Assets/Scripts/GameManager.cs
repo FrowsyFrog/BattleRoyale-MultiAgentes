@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] TMPro.TextMeshProUGUI _gameTimeTxt;
     [SerializeField] TMPro.TextMeshProUGUI _playersLeftTxt;
+    [SerializeField] TMPro.TextMeshProUGUI _ammoText;
+    [SerializeField] GameObject _restartButton;
 
     [Header("Game Timers")]
     [SerializeField] float _maxTimeGame = 600;
@@ -76,12 +78,26 @@ public class GameManager : MonoBehaviour
             _agentsAlive.Add(NewAgent);
         }
 
+        Debug.Log("Empieza el Battle Royale de bombas!");
+        Debug.Log($"Pelearan {_agentsAlive.Count} agentes!");
         _gameTimeTxt.text = $"Tiempo restante: {(int)_curTimeGame}";
         _playersLeftTxt.text = $"Agentes vivos: {_agentsAlive.Count}";
     }
 
-    void RestartGame()
+    public void SetAmmoText(int currentAmmo)
     {
+        if(currentAmmo == -1)
+        {
+            _ammoText.text = "HAS MUERTO!";
+            _restartButton.SetActive(true);
+            return;
+        }
+        _ammoText.text = "Municiones: " + currentAmmo.ToString();
+    }
+
+    public void RestartGame()
+    {
+        _restartButton.SetActive(false);
         _gameEnded = false;
         _maxAmmosInGame = _maxAmmosSaved;
         _curTimeGame = _maxTimeGame;
@@ -113,27 +129,38 @@ public class GameManager : MonoBehaviour
         HandleSpawnAmmo();
     }
 
-
+    float _passedTime;
     void HandleTimer()
     {
         if (_gameEnded) return;
 
         _curTimeGame -= Time.deltaTime;
+        _passedTime += Time.deltaTime;
+
+        if(_passedTime > 19f)
+        {
+            Debug.Log($"Quedan {(int)_curTimeGame} segundos!");
+            _passedTime = 0;
+        }
+
         if (_curTimeGame <= 0)
         {
+            _gameEnded = true;
+
             foreach (BattleAgent agent in _agents)
             {
                 agent.LoseGame();
             }
             _curTimeGame = 0;
 
-            _gameEnded = true;
 
             if (_restartWhenEnds)
                 RestartGame();
-            else {
-                enabled = false;
-            }
+
+            _gameTimeTxt.text = $"El tiempo se ha agotado...";
+            Debug.Log("El tiempo se ha agotado... Nadie gana.");
+            SetAmmoText(-1);
+            return;
         }
 
         _gameTimeTxt.text = $"Tiempo restante: {(int)_curTimeGame}";
@@ -186,18 +213,20 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDead(BattleAgent deadPlayer)
     {
+        if (_gameEnded) return;
         _maxAmmosInGame += deadPlayer.AvailableBombs;
         _agentsAlive.Remove(deadPlayer);
         _playersLeftTxt.text = $"Agentes vivos: {_agentsAlive.Count}";
-
+        Debug.Log($"Ha muerto un agente. Quedan {_agentsAlive.Count}...");
         if (_agentsAlive.Count > 1) return;
 
         BattleAgent AliveAgent = null;
         if(_agentsAlive.Count == 1)
         {
             AliveAgent = _agentsAlive[0];
-            AliveAgent.WinGame();
-            Debug.Log("winner!!!");
+            bool IsPlayer = AliveAgent.WinGame();
+            Debug.Log("Un agente se ha llevado la victoria!");
+            _gameTimeTxt.text = IsPlayer ? "HAS GANADO!" : "UN AGENTE GANÓ!";
         }
         
         foreach (BattleAgent agent in _agents)
@@ -208,9 +237,6 @@ public class GameManager : MonoBehaviour
 
         _gameEnded = true;
         if (_restartWhenEnds) RestartGame();
-        else {
-            enabled = false;
-        }
     }
 
     public void GrabAmmo(Transform ammo)
