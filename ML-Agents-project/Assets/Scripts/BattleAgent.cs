@@ -16,6 +16,7 @@ public class BattleAgent : Agent
     [SerializeField] float _moveSpeed = 1;
     [SerializeField] GameManager _gameManager;
     [SerializeField] GameObject _agentModel;
+    [SerializeField] private List<GameObject> _models;
     Rigidbody _rb;
     bool _isDead = false;
     bool _nearToBomb = false;
@@ -25,6 +26,8 @@ public class BattleAgent : Agent
 
     public override void Initialize()
     {
+        _agentModel = _models[Random.Range(0, _models.Count)];
+        _agentModel.SetActive(true);
         _rb = GetComponent<Rigidbody>();
     }
 
