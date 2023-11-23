@@ -24,7 +24,7 @@ Con el objetivo de desarrollar el sistema multiagente propuesto, hemos considera
 - Pytorch: Biblioteca de Python que incluye diferentes métodos para el desarrollo de aprendizaje automático.
 - CUDA: Plataforma de computación paralela que permite la codificación de algoritmos en GPU de Nvidia. Cuenta con un compilador y herramientas de desarrollo.
 - ML Agents: Software open-source de creación para la creación de personajes virtuales.
-- Unity: Plataforma de desarollo de softwares multiplataforma.
+- Unity: Plataforma de desarrollo de softwares multiplataforma.
 - Lenguaje de programación: Consideramos el uso de C# para la creación del comportamiento de los agentes.
 
 ## Implementación
@@ -49,11 +49,28 @@ Como se observa en la Figura 2, hemos diseñado una función que permite a los a
 *Video 1. Representación del aprendizaje de un agente. Elaboración propia, 2023.*
 <video src="https://github.com/FrowsyFrog/Topicos-Agentes/assets/91223158/f9505d31-3f9f-426d-ba3f-f281d2707de7"></video>
 
+## Resultados
+
+El desarrollo del proyecto tuvo como resultado la creación de un sistema con dos modos.
+
+Por un lado, el modo Headless abre una consola donde se muestra la información relevante de lo que está ocurriendo en el *Battle Royale*。 Este modo permite compilar el sistema con mínima exigencia de recursos, maximizando su velocidad.
+
+*Figura 3. Interfaz en modo Headless para la computación rápida del sistema*
+![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/3d022f15-84bc-4ec3-98f9-a8a0abe4c518)
+
+Por otro lado, el modo Interfaz visual abre una aplicación donde se muestran los modelos de los agentes, las bombas, munición y otros detalles del proyecto. Este modo, permite una experiencia más cómoda para el usuario, sacrificando cierto costo computacional.
+
+*Vídeo 2. Prueba del proyecto con interfaz visual*
+<video src="https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/87de0b2c-eba8-4eb0-b864-bb8a999b5672"></video>
+
+## Conclusiones
+
+- La modelación del entorno simulado fue capaz de albergar múltiples agentes y entidades simultáneamente gracias a las diversas herramientas disponibles en las plataformas utilizadas.
+- La interfaz visual proveida por Unity tuvo un buen desempeño, permitiendo observar el entorno sin interrupciones.
+- El entrenamiento de los agentes fue validado mediante pruebas lúdicas, mostrando que su funcionamiento es óptimo.
+- Las herramientas designadas para el desarrollo del sistema multiagente demostraron ser efectivas, debido a que permitieron la implementación exitosa de los requisitos solicitados para el proyecto.
+
 ### Bibliografía
 Dorri, A., Kanhere, S. S., & Jurdak, R. (2018). Multi-agent systems: A survey. *Ieee Access*, 6, 28573-28593. https://doi.org/10.1109/ACCESS.2018.2831228
 
 Singh, M. P. (1994). Multiagent systems. In J. G. Carbonell & J. Siekmann (Ed.)., *Multiagent systems* (pp. 1-2). https://doi.org/10.1007/BFb0030532
-
-
-
-
