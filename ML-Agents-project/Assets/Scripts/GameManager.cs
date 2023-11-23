@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         _curTimeGame = _maxTimeGame;
         _maxAmmosSaved = _maxAmmosInGame;
 
