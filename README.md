@@ -29,41 +29,47 @@ Con el objetivo de desarrollar el sistema multiagente propuesto, hemos considera
 - Lenguaje de programación: Consideramos el uso de C# para la creación del comportamiento de los agentes.
 
 ## Implementación
-Hemos considerado los siguientes componentes de nuestro código fuente como los más relevantes de la investigación.
+El primer paso para llevar a cabo nuestra implementación fue definir el tipo de aprendizaje de los agentes. El equipo determinó que los métodos óptimos para nuestro objetivo serían aprendizaje por refuerzo y aprendizaje por imitación.
+- Aprendizaje por refuerzo: Cada acción de un agente es recompensada positiva o negativamente dependiendo de su inclinación a la mejora.
 
-*Figura 1. Función CollectObservations. Elaboración propia, 2023.*
+  *Figura 1. Lista de recompensas de un agente.*
+  
+  ![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/ad634a5b-896f-4e28-9e8b-078bea05d49b)
 
-![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/74dbc19a-967b-4ecd-a09b-803bd7315204)
+  Como se observa en la Figura 1, se han diseñado diversas recompensas para los agentes en función de su comportamiento:
+  - WinReward: Recompensa positiva de un agente al ganar una contienda.
+  - KillReward: Recompensa positiva de un agente al eliminar otro agente.
+  - LosePenality: Recompensa negativa de un agente al perder una contienda.
+  - GrabAmmoReward: Recompensa positiva de un agente al recoger munición.
+  - InsideFutureExplosionPenality: Recompensa negativa de un agente por cada frame que permanezca dentro del radio de una bomba por explotar.
+  - OutFutureExplosionReward: Recompensa positiva de un agente por salir del rango de una explosión.
+  - OnWallPenality: Recompensa negativa de un agente por cada frame que colisiones contra una pared.
 
-Como se observa en la Figura 1, hemos creado una función que permite al agente recibir información sobre el estatus actual de la contienda, incluyendo su propia posición, la cantidad de bombas disponbibles y evaluar si ha sido eliminado.
-
-*Figura 2. Función OnActionReceived. Elaboración propia, 2023.*
-![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/b91d3647-4843-4472-b3e3-d4c49d72756d)
-![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/94ae8bde-b98d-45e2-864f-82ccd6950f47)
-
-Como se observa en la Figura 2, hemos diseñado una función que permite a los agentes interactuar con el entorno. Incluye la intención de movimiento, la disponibilidad e intención de colocar una bomba y le otorga al agente la capacidad de pericibir si se encuentra dentro del rango de explosión de una bomba. 
+- Aprendizaje por imitación: Se grabó un video que sirviera como referencia para el comportamiento esperado de los agentes. Además, se le asignó cierto grado de imitación para que tuvieran espacio de autonomía.
 
 *Video 1. Representación del aprendizaje de un agente. Elaboración propia, 2023.*
 <video src="https://github.com/FrowsyFrog/Topicos-Agentes/assets/91223158/f9505d31-3f9f-426d-ba3f-f281d2707de7"></video>
 
-*Figura 3. Lista de recompensas de un agente.*
+Este exhaustivo entrenamiento se llevó a cabo en 3,200,000 de pasos en un lapso de 6 horas, dividos en 5 etapas para integrar gradualmente el aprendizaje.
 
-![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/ad634a5b-896f-4e28-9e8b-078bea05d49b)
+Respecto al código, hemos considerado los siguientes componentes como los más relevantes de la investigación.
 
-Como se observa en la Figura 3, se han diseñado diversas recompensas para los agentes en función de su comportamiento:
-- WinReward: Recompensa positiva de un agente al ganar una contienda.
-- KillReward: Recompensa positiva de un agente al eliminar otro agente.
-- LosePenality: Recompensa negativa de un agente al perder una contienda.
-- GrabAmmoReward: Recompensa positiva de un agente al recoger munición.
-- InsideFutureExplosionPenality: Recompensa negativa de un agente por cada frame que permanezca dentro del radio de una bomba por explotar.
-- OutFutureExplosionReward: Recompensa positiva de un agente por salir del rango de una explosión.
-- OnWallPenality: Recompensa negativa de un agente por cada frame que colisiones contra una pared.
+*Figura 2. Función CollectObservations. Elaboración propia, 2023.*
 
-Además, como parte de nuestra implementación, diseñamos un diagrama para ilustrar la conexión de las clases más relevantes del proyecto.
+![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/74dbc19a-967b-4ecd-a09b-803bd7315204)
+
+Como se observa en la Figura 2, hemos creado una función que permite al agente recibir información sobre el estatus actual de la contienda, incluyendo su propia posición, la cantidad de bombas disponbibles y evaluar si ha sido eliminado.
+
+*Figura 3. Función OnActionReceived. Elaboración propia, 2023.*
+![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/b91d3647-4843-4472-b3e3-d4c49d72756d)
+![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/94ae8bde-b98d-45e2-864f-82ccd6950f47)
+
+Como se observa en la Figura 3, hemos diseñado una función que permite a los agentes interactuar con el entorno. Incluye la intención de movimiento, la disponibilidad e intención de colocar una bomba y le otorga al agente la capacidad de pericibir si se encuentra dentro del rango de explosión de una bomba. 
+
+Asimismo, como parte de nuestra implementación, diseñamos un diagrama para ilustrar la conexión de las clases más relevantes del proyecto.
 
 *Figura 4. Diagrama de Clases de Battle Royale Multiagentes.* 
 ![image](https://github.com/FrowsyFrog/BattleRoyale-MultiAgentes/assets/91223158/6026a2e8-e5fa-4b88-b10c-a4d75e0c8d27)
-
 
 ## Resultados
 
